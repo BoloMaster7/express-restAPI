@@ -1,7 +1,6 @@
 const express = require('express');
-const uuidv4 = require('uuid');
 const db = require('../db.js');
-
+const uuid = require('uuid').v4;
 const router = express.Router();
 
 router.route('/concerts').get((req, res) => {
@@ -14,7 +13,7 @@ router.route('/concerts/random').get((req, res) => {
 });
 
 router.route('/concerts/:id').get((req, res) => {
-    res.json(db.concerts.find((testimonial) => testimonial.id === +req.params.id));
+    res.json(db.concerts.find((concert) => concert.id === +req.params.id));
 });
 
 router.route('/concerts').post((req, res) => {
